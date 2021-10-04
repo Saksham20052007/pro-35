@@ -23,6 +23,7 @@ function setup() {
 function draw() {
   background(bagImg);
 
+  if(balloon.scale>0){
   if(keyDown(UP_ARROW)){
     updateHeight(0, -10);
     balloon.scale = balloon.scale - 0.1;
@@ -37,6 +38,8 @@ function draw() {
     if(keyDown(DOWN_ARROW)){
     updateHeight(+10, 0);
   } 
+  }
+ 
   drawSprites();
 
 }
