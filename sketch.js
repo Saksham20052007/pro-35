@@ -4,7 +4,7 @@ var balloon, balloonAnimation;
 var bagImg; 
 
 function preload(){
-  balloonAnimation = loadAnimation("parachute.png");
+  balloonAnimation = loadAnimation("para.png");
   bagImg = loadImage("city.png");
 
 
@@ -12,9 +12,10 @@ function preload(){
 
 function setup() {
   database = firebase.database();
-  createCanvas(800, 400);
+  createCanvas(1600, 800);
 
-  balloon = createSprite(200, 200, 50, 50);
+  balloon = createSprite(300, 300, 100, 80);
+  balloon.scale = 0.5;
   balloon.addAnimation("parachute", balloonAnimation );
   var balloonPosition = database.ref('balloon/height');
   balloonPosition.on("value", readPosition, showError);
@@ -26,11 +27,11 @@ function draw() {
   if(balloon.scale>0){
   if(keyDown(UP_ARROW)){
     updateHeight(0, -10);
-    balloon.scale = balloon.scale - 0.1;
+    balloon.scale = balloon.scale - 0.005;
   } 
   if(keyDown(DOWN_ARROW)){
     updateHeight(0, +10);
-    balloon.scale = balloon.scale + 0.1;
+    balloon.scale = balloon.scale + 0.005;
   }  
      if(keyDown(DOWN_ARROW)){
     updateHeight(-10, 0);
